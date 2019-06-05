@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="game">
+		
+		<h1 class="text-center">POINTS</h1>
+		<h1 class="points text-center">0</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog w-75" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="niger" style="opacity:0;background-color:black;height:300px;width:500px;position:absolute;margin-top:-200px;margin-left:300px">
+		<h1 style="color:white;text-align:center;margin-top:100px">You win!</h1>
+			
+	</div>
+	<div class="niger1" style="opacity:0;background-color:black;height:300px;width:500px;position:absolute;margin-top:-200px;margin-left:300px">
+		<h1 style="color:white;text-align:center;margin-top:100px">You loss!</h1>
+			
+	</div>
+	<style>
+		
+		
+	</style>
+
+	<script>
+		let pes = document.querySelectorAll(".jakethedog")
+		let king = document.querySelectorAll(".iceking")
+		let score = 0
+
+		let pup = function(){
+			let rand = Math.random()*8
+			let round = Math.round(rand)
+			pes[round].style.display = "block"
+			let pick = function(){
+				pes[round].style.display = "none"
+			}
+			setTimeout(pick,600)
+		}
+		let jake1 = setInterval(pup,900)
+
+		let ice = function(){
+			let rand = Math.random()*8
+			let round = Math.round(rand)
+			king[round].style.display = "block"
+			let ik = function(){
+				king[round].style.display = "none"
+			}
+			setTimeout(ik,600)
+		}
+		let king1 = setInterval(ice,900)
+
+		for(let index = 0; index<8; index = index + 1){//цикл
+			pes[index].onclick = function(){
+				pes[index].style.display = "none"
+				score = score + 1
+				document.querySelector(".points").innerHTML = score
+			}
+		}
+		for(let index = 0; index<8; index = index + 1){//цикл
+			king[index].onclick = function(){
+				king[index].style.display = "none"
+				score = score - 5
+				document.querySelector(".points").innerHTML = score
+			}
+		}
+	let time = function(){
+		clearInterval(jake1)
+		clearInterval(king1)
+		if ( score >= 1 ) {
+			document.querySelector(".niger").style.opacity = "1"
+			document.querySelector(".niger").style.transition = "2s"
+			document.querySelector(".niger").style.marginTop = "-500px"
+		}
+		else {
+			document.querySelector(".niger1").style.opacity = "1"
+			document.querySelector(".niger1").style.transition = "2s"
+			document.querySelector(".niger1").style.marginTop = "-500px"
+			
+		}
+	}
+	setTimeout(time,2000)
+			
+
+	</script>
+</body>
+</html>
